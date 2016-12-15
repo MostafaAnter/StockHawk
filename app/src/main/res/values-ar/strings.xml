@@ -20,6 +20,6 @@
     <string name="action_change_units">\@string/pref_display_mode_key</string>
     <string name="pref_display_mode_default">\@string/pref_display_mode_percentage_key</string>
     <string name="toast_stock_added_no_connectivity">تم اضافة سهم %s ,سيتم التحديث حين الاتصال بالشبكة</string>
-    <string name="title_activity_detail">تفاصيل السهم</string>
+    <string name="title_activity_detail">تغيير السعر عبر الوقت</string>
     <string name="no_match">الشركة المرتبطه بالسهم غير متواجده</string>
 </resources>
