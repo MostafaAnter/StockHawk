@@ -7,13 +7,17 @@ import android.support.v4.app.LoaderManager;
 import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.Toast;
+import android.util.Log;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.IFillFormatter;
+import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.models.HistPriceModel;
@@ -36,6 +40,8 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
     @BindView(R.id.chart)LineChart mChart;
     private static final int STOCK_LOADER = 0;
 
+
+    private boolean getDataOnce = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,29 +50,96 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
 
         getSupportLoaderManager().initLoader(STOCK_LOADER, null, this);
 
+    }
+
+    private void initChart(List<HistPriceModel> dataObjects) {
+        mChart.setViewPortOffsets(0, 0, 0, 0);
+       // mChart.setBackgroundColor(Color.rgb(104, 241, 175));
+
+        // no description text
+        mChart.getDescription().setEnabled(false);
+
+        // enable touch gestures
+        mChart.setTouchEnabled(true);
+
+        // if disabled, scaling can be done on x- and y-axis separately
+        mChart.setPinchZoom(false);
+
+        mChart.setDrawGridBackground(false);
+        mChart.setMaxHighlightDistance(300);
+
+        XAxis x = mChart.getXAxis();
+        x.setEnabled(false);
+
+        YAxis y = mChart.getAxisLeft();
+        y.setLabelCount(6, false);
+        y.setTextColor(Color.WHITE);
+        y.setPosition(YAxis.YAxisLabelPosition.INSIDE_CHART);
+        y.setDrawGridLines(false);
+        y.setAxisLineColor(Color.WHITE);
+
+        mChart.getAxisRight().setEnabled(false);
+
+        // add data
+        setData(dataObjects);
+
+        mChart.getLegend().setEnabled(false);
+
+        mChart.animateXY(2000, 2000);
+
+        // dont forget to refresh the drawing
+        mChart.invalidate();
 
     }
 
-    private void updateChart(List<HistPriceModel> dataObjects) {
+    private void setData(List<HistPriceModel> dataObjects) {
 
-        List<Entry> entries = new ArrayList<Entry>();
+        ArrayList<Entry> yVals = new ArrayList<Entry>();
 
         for (HistPriceModel data : dataObjects) {
             // turn your data into Entry objects
-            entries.add(new Entry(data.getHistory(), data.getPrice()));
+            yVals.add(new Entry(data.getHistory(), data.getPrice()));
         }
 
-        LineDataSet dataSet = new LineDataSet(entries, "Label"); // add entries to dataset
-        dataSet.setColor(Color.CYAN);
-        dataSet.setValueTextColor(Color.WHITE);
+        LineDataSet set1;
 
-        LineData lineData = new LineData(dataSet);
-        mChart.setData(lineData);
-        mChart.invalidate(); // refresh
+        if (mChart.getData() != null &&
+                mChart.getData().getDataSetCount() > 0) {
+            set1 = (LineDataSet)mChart.getData().getDataSetByIndex(0);
+            set1.setValues(yVals);
+            mChart.getData().notifyDataChanged();
+            mChart.notifyDataSetChanged();
+        } else {
+            // create a dataset and give it a type
+            set1 = new LineDataSet(yVals, "DataSet 1");
 
+            set1.setMode(LineDataSet.Mode.CUBIC_BEZIER);
+            set1.setCubicIntensity(0.2f);
+            //set1.setDrawFilled(true);
+            set1.setDrawCircles(false);
+            set1.setLineWidth(1.8f);
+            set1.setCircleRadius(4f);
+            set1.setCircleColor(Color.WHITE);
+            set1.setHighLightColor(Color.rgb(244, 117, 117));
+            set1.setColor(Color.WHITE);
+            set1.setFillColor(Color.WHITE);
+            set1.setFillAlpha(100);
+            set1.setDrawHorizontalHighlightIndicator(false);
+            set1.setFillFormatter(new IFillFormatter() {
+                @Override
+                public float getFillLinePosition(ILineDataSet dataSet, LineDataProvider dataProvider) {
+                    return -10;
+                }
+            });
 
-        // Show chart
-        mChart.setVisibility(View.VISIBLE);
+            // create a data object with the datasets
+            LineData data = new LineData(set1);
+            data.setValueTextSize(9f);
+            data.setDrawValues(false);
+
+            // set data
+            mChart.setData(data);
+        }
     }
 
     @Override
@@ -86,8 +159,6 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         String history = data.getString(
                 data.getColumnIndexOrThrow(Contract.Quote.COLUMN_HISTORY)
         );
-
-        Toast.makeText(this, history, Toast.LENGTH_LONG).show();
 
 
         CSVReader csvReader = new CSVReader(new StringReader(history), ',');
@@ -109,10 +180,16 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
             e.printStackTrace();
         }
 
+        System.out.print(histPriceModelList);
+
+        Log.e("llllist", histPriceModelList.toString());
+
 
         // finally show chart :)
-        updateChart(histPriceModelList);
+        if (!getDataOnce)
+            initChart(histPriceModelList);
 
+        getDataOnce = true;
 
     }
 

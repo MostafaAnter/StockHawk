@@ -95,7 +95,7 @@ public final class QuoteSyncJob {
                 StringBuilder historyBuilder = new StringBuilder();
 
                 for (HistoricalQuote it : history) {
-                    historyBuilder.append(it.getDate().getTimeInMillis());
+                    historyBuilder.append(it.getDate().getTime().getYear() + 1900);
                     historyBuilder.append(",");
                     historyBuilder.append(it.getClose());
                     historyBuilder.append("\n");
