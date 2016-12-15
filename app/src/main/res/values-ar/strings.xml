@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">أسهم البورصة</string>
+    <string name="add_new_stock">أضافة اسم شركة لتتبع سعر السهم</string>
+    <string name="default_stocks_apple">أبل</string>
+    <string name="default_stocks_facebook">فيس بوك</string>
+    <string name="default_stocks_yahoo">ياهو</string>
+    <string name="default_stocks_microsoft">مسفت</string>
+    <string name="dialog_add">أضافة</string>
+    <string name="dialog_cancel">إلغاء</string>
+    <string name="dialog_hint">أسم الشركة(مثال جوجل)</string>
+    <string name="dialog_title">أضافة اسم سهم</string>
+    <string name="error_no_network">لا يوجد أتصال بالشبكة سيتم تحميل الاسهم حين يعود الاتصال</string>
+    <string name="error_no_stocks">لا توجد أسهم اضغط على زر الاضافة لأضافة أسهم لتتبعها</string>
+    <string name="pref_display_mode_absolute_key">مطلق</string>
+    <string name="pref_display_mode_key">وضع الاظهار</string>
+    <string name="pref_display_mode_percentage_key">نسبة مئوية</string>
+    <string name="pref_stocks_key">الأسهم</string>
+    <string name="toast_no_connectivity">سيتم التحديث حين عودة الشبكة</string>
+    <string name="action_change_units">\@string/pref_display_mode_key</string>
+    <string name="pref_display_mode_default">\@string/pref_display_mode_percentage_key</string>
+    <string name="toast_stock_added_no_connectivity">تم اضافة سهم %s ,سيتم التحديث حين الاتصال بالشبكة</string>
+</resources>
