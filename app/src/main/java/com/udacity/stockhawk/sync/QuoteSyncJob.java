@@ -80,7 +80,7 @@ public final class QuoteSyncJob {
                 StockQuote quote = stock.getQuote();
 
                 if (quote.getPrice() == null){
-                    EventBus.getDefault().post(new NoMatch(context.getString(R.string.no_match)));
+                    EventBus.getDefault().post(new NoMatch(context.getString(R.string.no_match), symbol));
                     return;
                 }
 

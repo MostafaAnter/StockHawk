@@ -206,5 +206,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     public void handelNoMatchError(NoMatch event){
         swipeRefreshLayout.setRefreshing(false);
         Toast.makeText(this, event.getMessage(), Toast.LENGTH_SHORT).show();
+
+        // delete symbol
+        String symbol = event.getSymbol();
+        PrefUtils.removeStock(MainActivity.this, symbol);
+        getContentResolver().delete(Contract.Quote.makeUriForStock(symbol), null, null);
     }
 }

@@ -6,9 +6,11 @@ package com.udacity.stockhawk.events;
 
 public class NoMatch {
     private String message;
+    private String symbol;
 
-    public NoMatch(String message) {
+    public NoMatch(String message, String symbol) {
         this.message = message;
+        this.symbol = symbol;
     }
 
     public String getMessage() {
@@ -17,5 +19,13 @@ public class NoMatch {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public String getSymbol() {
+        return symbol;
+    }
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 }
