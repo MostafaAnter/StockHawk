@@ -8,11 +8,6 @@ public class HistPriceModel {
     private float history;
     private float price;
 
-    public HistPriceModel(float history, float price) {
-        this.history = history;
-        this.price = price;
-    }
-
     public float getHistory() {
         return history;
     }
@@ -27,5 +22,10 @@ public class HistPriceModel {
 
     public void setPrice(float price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "HistPriceModel [History=" + history + ", price=" + price + "]";
     }
 }

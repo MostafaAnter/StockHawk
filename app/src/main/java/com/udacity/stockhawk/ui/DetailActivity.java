@@ -18,12 +18,19 @@ import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.models.HistPriceModel;
 
+import java.io.IOException;
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import au.com.bytecode.opencsv.CSVReader;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
+
+/**
+ * Created by mostafa_anter on 12/15/16.
+ */
 public class DetailActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
 
     @BindView(R.id.chart)LineChart mChart;
@@ -72,6 +79,7 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
                 Contract.Quote.COLUMN_SYMBOL);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
         data.moveToFirst();
@@ -80,6 +88,30 @@ public class DetailActivity extends AppCompatActivity implements LoaderManager.L
         );
 
         Toast.makeText(this, history, Toast.LENGTH_LONG).show();
+
+
+        CSVReader csvReader = new CSVReader(new StringReader(history), ',');
+        //Set column mapping strategy
+        List<HistPriceModel> histPriceModelList = new ArrayList<>();
+
+        // read line by line
+        String[] record = null;
+
+        try {
+            while ((record = csvReader.readNext()) != null) {
+                HistPriceModel histPriceModel = new HistPriceModel();
+                histPriceModel.setHistory(Float.valueOf(record[0]));
+                histPriceModel.setPrice(Float.valueOf(record[1]));
+                histPriceModelList.add(histPriceModel);
+            }
+            csvReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        // finally show chart :)
+        updateChart(histPriceModelList);
 
 
     }
