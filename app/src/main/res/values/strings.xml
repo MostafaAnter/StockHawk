@@ -33,6 +33,6 @@
     <string name="toast_no_connectivity">Will refresh when network available.</string>
     <string name="add_new_stock">Add new Stock by writing symbol inside dialog will appear after clicking on it</string>
     <string name="title_activity_detail">Stock Detail</string>
-    <string name="no_match">No match stock</string>
+    <string name="no_match">stock quote doesn\'t exist</string>
 
 </resources>
