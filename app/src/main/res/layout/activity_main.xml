@@ -28,6 +28,7 @@
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:onClick="button"
+        android:contentDescription="@string/add_new_stock"
         android:src="@drawable/fab_plus"
         app:backgroundTint="@color/material_blue_500"
         app:borderWidth="0dp"
