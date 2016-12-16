@@ -22,4 +22,5 @@
     <string name="toast_stock_added_no_connectivity">تم اضافة سهم %s ,سيتم التحديث حين الاتصال بالشبكة</string>
     <string name="title_activity_detail">تغيير السعر عبر الوقت</string>
     <string name="no_match">الشركة المرتبطه بالسهم غير متواجده</string>
+    <string name="error_no_stocks_widget">لا يوجد أسهم!</string>
 </resources>

@@ -34,5 +34,6 @@
     <string name="add_new_stock">Add new Stock by writing symbol inside dialog will appear after clicking on it</string>
     <string name="title_activity_detail">Price over time</string>
     <string name="no_match">stock quote doesn\'t exist</string>
+    <string name="error_no_stocks_widget">No stocks added!</string>
 
 </resources>
