@@ -2,10 +2,6 @@
 <resources>
     <string name="app_name">أسهم البورصة</string>
     <string name="add_new_stock">أضافة اسم شركة لتتبع سعر السهم</string>
-    <string name="default_stocks_apple">أبل</string>
-    <string name="default_stocks_facebook">فيس بوك</string>
-    <string name="default_stocks_yahoo">ياهو</string>
-    <string name="default_stocks_microsoft">مسفت</string>
     <string name="dialog_add">أضافة</string>
     <string name="dialog_cancel">إلغاء</string>
     <string name="dialog_hint">أسم الشركة(مثال جوجل)</string>
