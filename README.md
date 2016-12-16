@@ -1,4 +1,4 @@
-##P3 - Stock Hawk  <img style="position: center;" src="https://github.com/alex-gru/android_dev_nanodegree_udacity/blob/master/p3-stockhawk/src/main/res/mipmap-xxxhdpi/ic_launcher.png" width="50">
+##P3 - Stock Hawk
 ***Included Udacity course: [Advanced Android App Development](https://www.udacity.com/course/advanced-android-app-development--ud855)***
 
 
@@ -31,7 +31,7 @@ Xaio-lu says:
 
 Based on the users' feedback, certain aspects of the application are enhanced/implemented:
 
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Main.png" width="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-174136.png" width="250">
 
 ####Accessibility (A11y)
 The most important aspect before publishing an app is to be aware of the wide range of potential users of the app. So it is crucial to support visually handicapped useres with Screen Reader properties. Google's TalkBack service provides spoken feedback for every interaction with the device. Stock Hawk does not yet have description for all buttons and other UI elements, so this missing information is added. 
@@ -39,8 +39,8 @@ The most important aspect before publishing an app is to be aware of the wide ra
 ####Homescreen Widgets
 Widgets are an effective way to gain the attention of the user, without the need of opening the app. They can be placed on the Android homescreen, where they provide essential and compact information. In this project, two types of widgets are implemented. A 4x1 single-row widget shows the top most stock symbol, and a so called collection widget provides a resizable 4x3 container, which shows a scrollable list of the stored stock symbols. 
 
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Widgets_1.png" width="250">
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Widgets_2.png" width="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-174119.png" width="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-202659.png" width="250">
 
 
 ####Localization (L10n)
