@@ -46,17 +46,15 @@ Widgets are an effective way to gain the attention of the user, without the need
 ####Localization (L10n)
 As important as A11y is, localization is also a very essential key for a successful app. Based on the feedback of ***the boss***, the release in Egypt is planned, so the app should be fine with Arabic translations and support for RTL (right to left) layouts. 
 
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - RTL_1.png" width="250">
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - RTL_2.png" width="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-204348.png" width="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-205215.png" width="250">
 
 ####Displaying data in a chart
-One user requests a chart view, which shows the stock changes over time in a graph. For this purpose, the library [WilliamChart](https://github.com/diogobernardino/WilliamChart) is used, which shows the stock changes, when the user selects a stock symbol on the main screen.
+One user requests a chart view, which shows the stock changes over time in a graph. For this purpose, the library [MPAndroidChart](https://github.com/PhilJay/MPAndroidChart) is used, which shows the stock changes, when the user selects a stock symbol on the main screen.
 
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Graph.png" height="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-174203.png" width="250">
 
 ####Error handling and misc changes
 Stock Hawk could not handle stock searches for non-existing symbols, so it crashed. This scenario (and similar ones) are handled by showing a Toast (info text) to the user, with details what went wrong. Also, better user feedback is implemented, like showing a hint text, if no stock symbols are provided, instead of a blank screen. Also, several minor issues are addressed and fixes are provided.
 
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Misc_1.png" width="250">
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Misc_2.png" width="250">
-<img style="position: center;" src="static/screenshots/P3 - Stock Hawk - Misc_3.png" width="250">
+<img style="position: center;" src="https://github.com/MostafaAnter/StockHawk/blob/master/device-2016-12-16-174257.png" width="250">
